@@ -1,0 +1,5 @@
+package com.example.smartpantry.ui;
+
+import android.app.*;import android.os.*;import android.graphics.Color;import android.view.*;import android.widget.*;import com.example.smartpantry.data.PantryDbHelper;import com.example.smartpantry.model.Models.*;
+
+public class RecipeDetailActivity extends Activity { public void onCreate(Bundle b){super.onCreate(b);PantryDbHelper db=new PantryDbHelper(this);Recipe r=db.getRecipe(getIntent().getIntExtra("recipeId",1));LinearLayout p=Ui.page(this);p.addView(Ui.title(this,r==null?"Recipe":""+r.name));if(r!=null){p.addView(Ui.label(this,"Ingredients"));for(RecipeIngredient x:r.ingredients){TextView t=Ui.label(this,"• "+x.quantity+" "+x.unit+"  "+x.name);t.setTextSize(16);p.addView(t);}p.addView(Ui.label(this,"Method"));TextView m=Ui.label(this,r.method);m.setTextSize(17);m.setPadding(24,12,24,24);p.addView(m);}Button back=Ui.button(this,"Back to suggestions");LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,58);lp.setMargins(24,16,24,16);p.addView(back,lp);back.setOnClickListener(v->finish());setContentView(p);}}

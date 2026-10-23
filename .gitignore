@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+/.idea/
+/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+
+# Video deliverables and video-only render assets
+*.mp4
+*.mov
+*.webm
+/video_assets/
+/interactive_assets/
